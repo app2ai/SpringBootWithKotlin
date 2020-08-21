@@ -10,35 +10,32 @@ import com.vr.api.service.PersonService
 
 @RestController
 @RequestMapping("/v1/")
-class WebServices {
+class WebServices : ErrorController{
 
-//    companion object{     : ErrorController
-//        private const val ERROR_PATH = "/error"
-//    }
+    companion object{
+        private const val ERROR_PATH = "/error"
+    }
 
     @Autowired
     lateinit var personService: PersonService
 
-//    override fun getErrorPath(): String? {
-//        return ERROR_PATH
-//    }
+    override fun getErrorPath(): String? {
+        return ERROR_PATH
+    }
 
-//    @RequestMapping(ERROR_PATH)    
-//    fun error(): String { 
-//        return "<h2>Facing error during execution of QUERY</h2>"
-//    }
+    @RequestMapping(ERROR_PATH)    
+    fun error(): String { 
+        return "<h4>Facing error during execution of QUERY</h4>"
+    }
     
     @GetMapping("/")
     fun welcom(): String {
-        println("================== Welcome API called")
         return "<h3>Kotlin APIs and Server started successfully</h3>"
     }
 
-    @GetMapping("/user-info/{userId}")
+    @GetMapping("user-info/{userId}")
     fun getUserInfo(@PathVariable userId: Int): String {
-        print("Start api")
         var person = personService.getUserById(userId)
         return "Hello Mr. ${person ?: "Anoy"}"
-        print("End api")
     }
 }
