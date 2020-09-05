@@ -22,8 +22,12 @@ class PersonServiceImpl : PersonService {
     
     @Autowired
     lateinit var personDao: PersonDao
-    
+
     override fun getUserById(userId: Int): Person? {
         return personDao.getUserById(userId)
+    }
+    
+    override fun getAllUsers(): List<Person>? {
+        return personDao.getAllUser()
     }
 }

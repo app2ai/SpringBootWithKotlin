@@ -14,4 +14,5 @@ import com.vr.api.models.Person
 
 interface PersonService {
     fun getUserById(userId: Int):Person?
+    fun getAllUsers():List<Person>?
 }

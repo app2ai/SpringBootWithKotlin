@@ -13,4 +13,5 @@ import com.vr.api.models.Person
 
 interface PersonDao {
     fun getUserById(userId: Int): Person?
+    fun getAllUser(): List<Person>?
 }

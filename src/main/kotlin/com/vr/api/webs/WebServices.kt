@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import com.vr.api.service.PersonService
 
 @RestController
-@RequestMapping("/v1/")
+@RequestMapping("/v1")
 class WebServices : ErrorController{
 
     companion object{
@@ -33,9 +33,18 @@ class WebServices : ErrorController{
         return "<h3>Kotlin APIs and Server started successfully</h3>"
     }
 
-    @GetMapping("user-info/{userId}")
+    @GetMapping("/user-info/{userId}")
     fun getUserInfo(@PathVariable userId: Int): String {
         var person = personService.getUserById(userId)
         return "Hello Mr. ${person ?: "Anoy"}"
+    }
+    
+    @GetMapping("/all-user")
+    fun getAllUser():String{
+        val personList = personService.getAllUsers()
+        personList?.forEach { 
+            println(it.fname)
+        }
+        return "Total users are ${personList?.size}"
     }
 }

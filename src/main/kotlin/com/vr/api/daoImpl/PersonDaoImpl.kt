@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.vr.api.dao.PersonDao
 import com.vr.api.models.Person
 import org.springframework.beans.factory.annotation.Autowired
+import com.vr.api.mappers.PersonMapper
 
 
 @Repository
@@ -21,20 +22,26 @@ class PersonDaoImpl : PersonDao {
     
     private lateinit var dataSource: DataSource
     private lateinit var jdbcTemplate: JdbcTemplate
-    
+
     @Autowired
-    fun setDataSource(dataSource: DataSource){
+    fun setDataSource(dataSource: DataSource) {
         this.dataSource = dataSource
         this.jdbcTemplate = JdbcTemplate(dataSource)
     }
-    
+
     @Throws(SQLException::class)
     override fun getUserById(userId: Int): Person? {
         val personQuery = "SELECT * FROM person p WHERE p.`id` = ?"
-        val rm: RowMapper<Person?> = RowMapper<Person?>{
-            rs: ResultSet, i: Int->
+        val rm: RowMapper<Person?> = RowMapper<Person?> {
+            rs: ResultSet, i: Int ->
             Person(rs.getInt("id"), rs.getString("fname"), rs.getString("lname"), rs.getInt("age"))
         }
         return this.jdbcTemplate.queryForObject(personQuery, arrayOf(userId), rm)
+    }
+    
+    @Throws(SQLException::class)
+    override fun getAllUser(): MutableList<Person>? {
+        val query = "SELECT * FROM person"
+        return this.jdbcTemplate.query(query, PersonMapper())
     }
 }
