@@ -12,7 +12,6 @@ import com.vr.api.models.Person
 import org.springframework.beans.factory.annotation.Autowired
 
 /*
-
   @author altius
   Created on 19 Aug, 2020
 */
