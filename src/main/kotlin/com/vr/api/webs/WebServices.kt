@@ -1,5 +1,8 @@
 package com.vr.api.webs
 
+import com.google.gson.Gson
+import com.google.gson.JsonElement
+import com.google.gson.reflect.TypeToken
 import org.springframework.boot.web.servlet.error.ErrorController
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -78,7 +81,11 @@ class WebServices : ErrorController{
     }
     
     @GetMapping("/all-note")
-    fun getAllNotes():List<Notes>{
-        return noteService.allNotes()
+    fun getAllNotes():RestResponse{
+        val res = noteService.allNotes()
+        return when(res.size){
+            0-> RestResponse(FAILED, "No notes Found/Error during notes fetching", null)
+            else-> RestResponse(SUCCESS, "Notes read successfully", res)
+        }
     }
 }

@@ -61,7 +61,11 @@ class NoteDaoImpl : NoteDao {
     }
     
     override fun allNotes(): List<Notes> {
-        val sql = "SELECT * FROM notes;"
-        return this.jdbcTemplate.query(sql, NoteMapper())
+        try{
+            val sql = "SELECT * FROM notes;"
+            return this.jdbcTemplate.query(sql, NoteMapper())
+        }catch(x: Exception){
+            return listOf()
+        }
     }
 }
