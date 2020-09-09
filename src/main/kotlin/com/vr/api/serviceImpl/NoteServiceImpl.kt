@@ -21,9 +21,12 @@ class NoteServiceImpl : NoteService {
     override fun addNotes(notes: Notes): Int {
         return noteDao.addNote(notes)
     }
-    
+
     override fun findNoteById(id: Int): Notes? {
         return noteDao.findNoteById(id)
     }
 
+    override fun allNotes(): List<Notes> {
+        return noteDao.allNotes()
+    }
 }

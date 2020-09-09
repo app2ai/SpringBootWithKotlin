@@ -15,4 +15,5 @@ import com.vr.api.models.Notes
 interface NoteDao {
     fun addNote(note: Notes):Int
     fun findNoteById(id: Int):Notes?
+    fun allNotes():List<Notes>
 }

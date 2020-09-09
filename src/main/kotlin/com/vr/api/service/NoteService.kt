@@ -9,4 +9,5 @@ import com.vr.api.models.Notes
 interface NoteService {
     fun addNotes(notes: Notes):Int
     fun findNoteById(id: Int):Notes?
+    fun allNotes():List<Notes>
 }

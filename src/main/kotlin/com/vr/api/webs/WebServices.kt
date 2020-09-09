@@ -59,6 +59,8 @@ class WebServices : ErrorController{
         return "Total users are ${personList?.size}"
     }
     
+    // ------------- This is Notes API ---------------------
+    
     @PostMapping(path = arrayOf("/add-note"))
     fun addNote(@RequestBody note: Notes):RestResponse?{
         println("Add note method entered")
@@ -73,5 +75,10 @@ class WebServices : ErrorController{
     @GetMapping("/note/{id}")
     fun getNoteById(@PathVariable id: Int):Notes?{
         return noteService.findNoteById(id)
+    }
+    
+    @GetMapping("/all-note")
+    fun getAllNotes():List<Notes>{
+        return noteService.allNotes()
     }
 }
