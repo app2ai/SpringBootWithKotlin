@@ -26,3 +26,6 @@ CREATE TABLE `notes` (
 INSERT INTO `vtest_db`.`notes`(`id`,`note_title`,`note_desc`,`created_by`,`created_date`,`updated_by`,`updated_date`) VALUES ( NULL,'Todays plan for work','Playing cricket, done home work, helping mom etc','1',NOW(),'1',NOW()); 
 
 INSERT INTO `vtest_db`.`notes`(`id`,`note_title`,`note_desc`,`created_by`,`created_date`,`updated_by`,`updated_date`) VALUES ( NULL,'Afternoon plan','Go to market and bring vegetables','1',NOW(),'1',NOW()); 
+
+# Note
+Kindly check application.properties file, Keep/Change DB name and username password accordingly. 
