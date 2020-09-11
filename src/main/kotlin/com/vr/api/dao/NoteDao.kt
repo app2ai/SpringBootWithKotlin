@@ -16,4 +16,5 @@ interface NoteDao {
     fun addNote(note: Notes):Int
     fun findNoteById(id: Int):Notes?
     fun allNotes():List<Notes>
+    fun syncNotes():MutableList<Notes>?
 }

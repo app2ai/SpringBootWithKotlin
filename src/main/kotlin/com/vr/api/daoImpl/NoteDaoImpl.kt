@@ -21,7 +21,7 @@ import com.vr.api.mappers.NoteMapper
 
 @Repository
 class NoteDaoImpl : NoteDao {
-    
+
     private lateinit var dataSource: DataSource
     private lateinit var jdbcTemplate: JdbcTemplate
 
@@ -59,13 +59,23 @@ class NoteDaoImpl : NoteDao {
         }
         return this.jdbcTemplate.queryForObject(sql, arrayOf(id), rm)
     }
-    
+
     override fun allNotes(): List<Notes> {
-        try{
+        try {
             val sql = "SELECT * FROM notes;"
             return this.jdbcTemplate.query(sql, NoteMapper())
-        }catch(x: Exception){
+        } catch(x: Exception) {
             return listOf()
+        }
+    }
+    
+    override fun syncNotes(): MutableList<Notes>? {
+        try{
+            val sql = "SELECT * FROM notes;"// n ORDER BY n.`id` DESC;
+            return this.jdbcTemplate.query(sql, NoteMapper())
+        }catch(x: Exception){
+            println("Error Sync: ${x.message}")
+            return null
         }
     }
 }

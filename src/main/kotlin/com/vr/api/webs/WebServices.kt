@@ -88,4 +88,14 @@ class WebServices : ErrorController{
             else-> RestResponse(SUCCESS, "Notes read successfully", res)
         }
     }
+    
+    @GetMapping("/sync/{count}")
+    fun syncNotes(@PathVariable count: Int):RestResponse{
+        val list = noteService.syncNotes(count)
+        return when{
+            list == null -> return RestResponse(FAILED, "Error during query execution", null)
+            list.size == 0 ->  return RestResponse(SUCCESS, "Notes are upto date", list)
+            else -> return RestResponse(SUCCESS, "Sync successfully", list)
+        }
+    }
 }

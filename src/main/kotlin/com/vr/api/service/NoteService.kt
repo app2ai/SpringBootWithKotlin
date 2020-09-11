@@ -10,4 +10,5 @@ interface NoteService {
     fun addNotes(notes: Notes):Int
     fun findNoteById(id: Int):Notes?
     fun allNotes():List<Notes>
+    fun syncNotes(count: Int):List<Notes>?
 }
