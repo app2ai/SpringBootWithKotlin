@@ -9,5 +9,13 @@ package com.vr.api.models
   @author Vishal
   Created on 20 Aug, 2020
 */
+import javax.persistence.*;
 
-data class Person(var id:Int, var fname: String, var lname: String, var age: Int)
+@Entity
+data class Person(
+        @Id
+        @GeneratedValue
+        var id:Int = -1,
+        var fname: String? = null,
+        var lname: String? = null,
+        var age: Int = 0)

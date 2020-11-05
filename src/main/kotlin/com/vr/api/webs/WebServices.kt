@@ -50,16 +50,26 @@ class WebServices : ErrorController{
     @GetMapping("/user-info/{userId}")
     fun getUserInfo(@PathVariable userId: Int): String {
         var person = personService.getUserById(userId)
-        return "Hello Mr. ${person ?: "Anoy"}"
+        var realPerson = person.get()
+        return "Hello Mr. ${realPerson ?: "Anoy"}"
     }
     
-    @GetMapping("/all-user")
-    fun getAllUser():String{
-        val personList = personService.getAllUsers()
+//    @GetMapping("/all-user")
+//    fun getAllUser():String{
+//        val personList = personService.getAllUsers()
+//        personList?.forEach { 
+//            println(it.fname)
+//        }
+//        return "Total users are ${personList?.size}"
+//    }
+    
+    @GetMapping("/all-user-hiber")
+    fun getAllUserHiber():String{
+        val personList = personService.findAllPerson()
         personList?.forEach { 
             println(it.fname)
         }
-        return "Total users are ${personList?.size}"
+        return "Total users are hiber ${personList?.size}"
     }
     
     // ------------- This is Notes API ---------------------

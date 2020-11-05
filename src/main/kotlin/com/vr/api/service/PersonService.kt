@@ -6,13 +6,17 @@
 package com.vr.api.service
 
 import com.vr.api.models.Person
+import java.util.Optional
+import org.springframework.stereotype.Service;
 /*
 
   @author Vishal
   Created on 19 Aug, 2020
 */
 
+@Service
 interface PersonService {
-    fun getUserById(userId: Int):Person?
-    fun getAllUsers():List<Person>?
+    fun getUserById(userId: Int):Optional<Person?>
+//    fun getAllUsers():List<Person>?
+    fun findAllPerson():List<Person>?
 }

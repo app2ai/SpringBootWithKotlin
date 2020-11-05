@@ -5,9 +5,11 @@
  */
 package com.vr.api.serviceImpl
 
+import java.util.Optional
 import org.springframework.stereotype.Service;
 import com.vr.api.service.PersonService
 import com.vr.api.dao.PersonDao
+import com.vr.api.repo.PersonRepo
 import com.vr.api.models.Person
 import org.springframework.beans.factory.annotation.Autowired
 
@@ -19,14 +21,21 @@ import org.springframework.beans.factory.annotation.Autowired
 @Service
 class PersonServiceImpl : PersonService {
     
-    @Autowired
-    lateinit var personDao: PersonDao
-
-    override fun getUserById(userId: Int): Person? {
-        return personDao.getUserById(userId)
-    }
+//    @Autowired
+//    lateinit var personDao: PersonDao
     
-    override fun getAllUsers(): List<Person>? {
-        return personDao.getAllUser()
+    @Autowired
+    lateinit var personRepo: PersonRepo
+
+    override fun getUserById(userId: Int): Optional<Person?>{
+        return personRepo.findById(userId)
+    }
+
+//    override fun getAllUsers(): List<Person>? {
+//        return personDao.getAllUser()
+//    }
+    
+    override fun findAllPerson(): List<Person>? {
+        return personRepo.findAll()
     }
 }

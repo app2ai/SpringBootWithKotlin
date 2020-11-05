@@ -25,6 +25,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>-->
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-aop</artifactId>
+                    <version>2.3.1.RELEASE</version>
+                    <scope>compile</scope>
+                </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -33,15 +39,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web-services</artifactId>
 		</dependency>
-<!--                <dependency>
+                <dependency>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-data-jpa</artifactId>
-                </dependency>-->
+                </dependency>
 <!--                <dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
-		</dependency>--> 
+		</dependency> -->
                 <dependency>
                     <groupId>com.google.code.gson</groupId>
                     <artifactId>gson</artifactId>
@@ -67,15 +73,26 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-jdbc</artifactId>
                 </dependency>
-<!--                <dependency>
-                    <groupId>org.hibernate</groupId>
-                    <artifactId>hibernate-core</artifactId>
-                </dependency>-->
-<!--                <dependency>
-                    <groupId>org.hibernate</groupId>
-                    <artifactId>hibernate-testing</artifactId>
-                    <scope>test</scope>
-                </dependency>-->
+                <dependency>
+                  <groupId>org.hibernate</groupId>
+                  <artifactId>hibernate-core</artifactId>
+                  <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>javax.transaction</groupId>
+                    <artifactId>javax.transaction-api</artifactId>
+                    <scope>compile</scope>
+                  </dependency>
+                <dependency>
+                    <groupId>org.springframework.data</groupId>
+                    <artifactId>spring-data-jpa</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-aspects</artifactId>
+                    <scope>compile</scope>
+                </dependency>
                 <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
@@ -105,11 +122,11 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-<!--		<dependency>
+		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
-		</dependency>-->
+		</dependency>
 	</dependencies>
 
 	<build>
